@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto final</title>
+    <style> 
+       body {
+        background-color: #000;
+        font-family: arial;
+        color: #fff;
+       }
+
+       .container {
+        max-width: 1024px;
+        width: 50%;
+        margin: 0 auto;
+       }
+
+       label {
+         display: block;
+         color: #fff;
+         margin-top: 20px;
+      }
+
+      form {
+         margin-top: 200px;
+      }
+
+      button {
+         cursor: pointer;
+         width: 100%;
+         border-radius: 17%;
+         background-color:darkcyan;
+         color: #fff;
+         margin: 17px 5px 17px 5px;
+         padding: 5px 0 5px 0;
+      }
+
+      .input {
+         width: 100%;
+      }
+      
+      a {
+         text-decoration: none;
+         color: #fff;
+      }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Projeto final</h1>
+        {% block content %}
+        {% endblock  %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <form method="post">
+        {% csrf_token %}
+        <div>
+            {{form}}
+        </div>
+        <div>
+            <button type="submit">teste</button>
+        </div>
+    </form>
+    <div>
+        {% for itens in form  %}
+          <div>
+              {{itens.title}}
+              {{itens.content}}
+              {{itens.author}}
+              {{itens.created_at}}
+          </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

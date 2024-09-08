@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+   <style>
+   </style>
+   <div class="container">
+      <form action="{% url 'index' %}" method="post">
+         {% csrf_token %}
+         <div>
+            {% for field in form.visible_fields %}
+            <div>
+               <label for="{{field.id_for_label}}">{{field.label}}</label>
+               {{field}}
+            </div>
+            {% endfor %}
+         </div>
+         <div>
+            <button type="submit">login</button>
+            <a href="{% url 'register' %}"><span>Ainda não tem uma conta?</span></a>
+         </div>
+      </form>
+   </div>
+{% endblock %}
