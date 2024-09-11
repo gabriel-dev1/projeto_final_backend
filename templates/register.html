@@ -2,6 +2,13 @@
 
 {% block content %}
  <div class="container">
+    <div>
+        {% for message in messages %}
+        <div class="message">
+            <p id="messages">{{message}}</p>
+        </div>
+        {% endfor %}
+    </div>
     <form action="{% url 'register' %}" method="post">
         {% csrf_token %}
         <div>

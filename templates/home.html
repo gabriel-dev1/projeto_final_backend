@@ -12,12 +12,20 @@
         </div>
     </form>
     <div>
-        {% for itens in form  %}
+        {% for post in posts %}
           <div>
-              {{itens.title}}
-              {{itens.content}}
-              {{itens.author}}
-              {{itens.created_at}}
+              {{post.title}}
+              {{post.content}}
+              {{post.author}}
+              {{post.created_at}}
+              <div>
+                  {% if {{post.status}} == {{0}} %}
+                    <span>curtir</span>
+                  {% else %}
+                    <span>curtido</span>
+                  {% endif %}
+              </div>
+                curtir
           </div>
         {% endfor %}
     </div>
