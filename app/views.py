@@ -48,7 +48,7 @@ def register(request):
             email = form['email'].value()
             password = form['password1'].value()
 
-            if User.objects.filter(username == nome).exists():
+            if User.objects.filter(username = nome).exists():
                 messages.error(request, 'esse usuário já existe')
                 return redirect('register')
             
