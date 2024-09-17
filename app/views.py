@@ -9,7 +9,7 @@ from django.contrib import messages
 def index(request):
     form = Login()
 
-    if request.method == 'post':
+    if request.method == 'POST':
         form = Login(request.POST)
 
         if form.is_valid():
@@ -33,14 +33,13 @@ def index(request):
     return render(request, 'index.html', {'form': form})
 
 def register(request):
-    register = RegisterForm()
+    form = RegisterForm()
 
-    if request.method == 'post':
+    if request.method == 'POST':
         form = RegisterForm(request.POST)
 
         if form.is_valid():
-
-            if form['password1'].value() != form['password2']:
+            if form['password1'].value() != form['password2'].value():
                 messages.error(request, 'senhas não são iguais.')
                 return redirect('register')
             
@@ -48,7 +47,7 @@ def register(request):
             email = form['email'].value()
             password = form['password1'].value()
 
-            if User.objects.filter(username = nome).exists():
+            if User.objects.filter(username=nome).exists():
                 messages.error(request, 'esse usuário já existe')
                 return redirect('register')
             
@@ -57,22 +56,22 @@ def register(request):
               email = email ,
               password = password,
             )
+            
             user.save()
             messages.success(request, 'cadastro efetuado')
             return redirect('index')
         
-    return render(request, 'register.html', {'form': register})
+    return render(request, 'register.html', {'form': form})
 
 def home(request):
     form  = PostForm()
-    if request.method == 'post':
+    if request.method == 'POST':
         form = PostForm(request.POST or None)
 
         if form.is_valid():
-            post = form.save(commit=False)
+            post = form.save()
             post.author = request.user
             post.save()
             return redirect('home')
-        posts = Post.objects.all().order_by('-created_at')
-        
-    return render(request, 'home.html' , {'posts': posts} , {'form': form})
+    posts = Post.objects.all().order_by('-created_at')
+    return render(request, 'home.html', {'posts': posts ,'form': form})

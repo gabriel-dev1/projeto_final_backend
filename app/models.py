@@ -1,18 +1,12 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-STATUS = (
-    (0, 'teste1'),
-    (1, 'teste2')
-)
-
 # Create your models here.
 class Post(models.Model):
-    title = models.CharField(max_length=200, unique=True)
-    content = models.TextField(max_length=200)
+    title = models.CharField(max_length=200, unique=True, null=False, blank=False)
+    content = models.TextField(max_length=200, null=False, blank=False)
     created_at = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='post')
-    teste = models.IntegerField(choices=STATUS, default=0)
 
     class Meta:
         ordering = ['-created_at']
