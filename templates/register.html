@@ -9,7 +9,7 @@
         </div>
         {% endfor %}
     </div>
-    <form action="{% url 'register' %}" method="post">
+    <form action="{% url 'register' %}" method="POST">
         {% csrf_token %}
         <div>
             {% for field in form.visible_fields %}

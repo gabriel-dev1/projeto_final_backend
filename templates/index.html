@@ -11,7 +11,7 @@
          </div>
          {% endfor %}
       </div>
-      <form action="{% url 'index' %}" method="post">
+      <form action="{% url 'index' %}" method="POST">
          {% csrf_token %}
          <div>
             {% for field in form.visible_fields %}

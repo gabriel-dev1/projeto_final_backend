@@ -1,8 +1,23 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<style>
+  .card {
+    background-color: darkcyan;
+    border-radius: 16px;
+    padding: 20px;
+
+    h2 {
+      border-bottom: 2px solid #000;
+    }
+
+    .span {
+      border-top: 2px solid #000;
+    }
+  }
+</style>
 <div class="container">
-    <form method="post">
+    <form method="POST">
         {% csrf_token %}
         <div>
             {{form}}
@@ -13,19 +28,17 @@
     </form>
     <div>
         {% for post in posts %}
-          <div>
-              {{post.title}}
-              {{post.content}}
-              {{post.author}}
-              {{post.created_at}}
-              <div>
-                  {% if {{post.status}} == {{0}} %}
-                    <span>curtir</span>
-                  {% else %}
-                    <span>curtido</span>
-                  {% endif %}
-              </div>
-                curtir
+          <div class="card">
+              <h2> 
+                {{post.title}}
+              </h2>
+              <p>
+                {{post.content}}
+              </p>
+              <span class="span">
+                {{post.author}},
+                {{post.created_at}}
+              </span>
           </div>
         {% endfor %}
     </div>
