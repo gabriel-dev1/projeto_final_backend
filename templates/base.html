@@ -21,6 +21,7 @@
          display: block;
          color: #fff;
          margin-top: 20px;
+         font-weight: bold;
       }
 
       form {
@@ -30,7 +31,8 @@
       button {
          cursor: pointer;
          width: 100%;
-         border-radius: 17%;
+         border-radius: 17px;
+         border: none;
          background-color:darkcyan;
          color: #fff;
          margin: 17px 5px 17px 5px;
@@ -39,6 +41,9 @@
 
       .input {
          width: 100%;
+         border-radius: 17px;
+         border: none;
+         padding: 5px;
       }
       
       a {
@@ -50,11 +55,21 @@
          background-color: darkcyan;
          border-radius: 17%;
       }
+
+      .form {
+         background-color: dimgrey;
+         padding: 20px;
+         border-radius: 15px;
+      }
+
+      h1 {
+         text-align: center;
+      }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Projeto final</h1>
+        <h1>Projeto final backend</h1>
         {% block content %}
         {% endblock  %}
     </div>
