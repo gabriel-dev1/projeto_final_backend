@@ -69,9 +69,8 @@ class PostForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = ['content', 'title']
-        widget = {
-            'title': forms.TextInput(
-                attrs = {
+        widgets = {
+            'title': forms.TextInput(attrs = {
                 'class': 'input',
                 'placeholder': 'Digite o Título'
                 }
@@ -79,7 +78,8 @@ class PostForm(forms.ModelForm):
             'content': forms.Textarea(
                 attrs = {
                    'class': 'input',
-                   'placeholder': 'Digite algo aqui'
+                   'placeholder': 'Digite algo aqui',
+                   'rows': 3
                 }
             )
         }
