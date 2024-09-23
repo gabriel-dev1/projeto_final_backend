@@ -75,3 +75,8 @@ def home(request):
             return redirect('home')
     posts = Post.objects.all().order_by('-created_at')
     return render(request, 'home.html', {'posts': posts ,'form': form})
+
+def logout(request):
+    auth.logout(request)
+    messages.success('logout efetuado com sucesso.')
+    return redirect('index')

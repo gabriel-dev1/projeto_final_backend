@@ -68,7 +68,7 @@ class RegisterForm(forms.Form):
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ['content', 'title']
+        fields = ['title', 'content']
         widgets = {
             'title': forms.TextInput(attrs = {
                 'class': 'input',
