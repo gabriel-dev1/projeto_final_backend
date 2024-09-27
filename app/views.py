@@ -64,6 +64,10 @@ def register(request):
     return render(request, 'register.html', {'form': form})
 
 def home(request):
+    if not request.user.is_authenticated:
+        messages.error(request, 'Usuário não logado.')
+        return redirect('index')
+
     form  = PostForm()
     if request.method == 'POST':
         form = PostForm(request.POST or None)
