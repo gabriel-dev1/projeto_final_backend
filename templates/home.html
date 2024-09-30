@@ -6,6 +6,8 @@
     background-color: darkcyan;
     border-radius: 16px;
     padding: 20px;
+    margin-top: 10px;
+  }
 
     h2 {
       border-bottom: 2px solid #000;
@@ -14,21 +16,44 @@
     .span {
       border-top: 2px solid #000;
     }
-  }
+
+    .post-delete {
+      background-color: red;
+      border-radius: 5px;
+      padding: 5px;
+    }
+
+    .post-edit {
+      background-color:green;
+      border-radius: 5px;
+      padding: 5px;
+    }
+
+    .div {
+      margin-top: 10px;
+    }
 </style>
 <div class="container">
-    <form method="POST">
-        {% csrf_token %}
-        <div>
-            {{form}}
-        </div>
-        <div>
-            <button type="submit">teste</button>
-        </div>
-    </form>
+  {% if 'editar_post' %}
+  <form method="POST">
+    {% csrf_token %}
     <div>
-        {% for post in posts %}
-          <div class="card">
+      {{ form }}
+      <button type="submit">Postar</button>
+    </div>
+  </form>
+  {% else %}
+  <form method="POST">
+    {% csrf_token %}
+    <div>
+      {{ form2 }}
+    </div>
+  </form>
+  {% endif %}
+  <div>
+    {% for post in posts %}
+    <div class="card">
+
               <h2> 
                 {{post.title}}
               </h2>
@@ -39,8 +64,13 @@
                 {{post.author}},
                 {{post.created_at}}
               </span>
-          </div>
-        {% endfor %}
+              <div class="div">
+                <a class="post-edit" href="{% url 'editar_post' post.id %}">Editar</a>
+                <a class="post-delete" href="{% url 'deletar_post' post.id %}">Excluir</a>
+              </div>
+            </div>
+            {% endfor %}
+
     </div>
 </div>
 {% endblock %}
