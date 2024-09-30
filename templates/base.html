@@ -75,9 +75,11 @@
 <body>
     <div class="container">
         <h1>Projeto final backend</h1>
-        <div class="center">
-           <a href="{% url 'logout' %}">Logout</a>
-        </div>
+        {% for message in messages %}
+          <div class="center message">
+              {{ message }}
+          </div>
+        {% endfor %}
         {% block content %}
         {% endblock  %}
     </div>
